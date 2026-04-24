@@ -72,10 +72,10 @@ h1 {
     font-size: 2.5rem;
     font-weight: 900;
     margin-bottom: 15px;
-
+.gradient-text {
     background: linear-gradient(90deg, #ff9a9e, #fad0c4);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;}
 }
 
 @keyframes wiggle {
