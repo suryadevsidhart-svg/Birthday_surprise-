@@ -69,7 +69,7 @@ body {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size:clamp(2rem,5vw,3rem);
     font-weight: 900;
     margin-bottom: 15px;
 .gradient-text {
@@ -180,7 +180,7 @@ h1 {
 }
 
 .yes-message {
-    font-size: 1.4rem;
+    font-size:clamp(1.2rem,3vw,1.6rem);
     color: #e91e8c;
     font-weight: 700;
     margin-top: 24px;
