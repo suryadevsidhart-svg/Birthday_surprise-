@@ -1,190 +1,30 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday suprise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts-bg"></div>
 
-body {
-    font-family: 'Nunito', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    <div class="container">
+        <h1>So today it's your birthday , Here's your gift 🎁</h1>
 
-    background: linear-gradient(135deg, #667eea, #764ba2);
-}
+        <div class="gif-container">
+            <img id="cat-gif" src="giphy.gif" alt="birthday">
+        </div>
 
-/* Floating hearts background */
-.hearts-bg {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
+        <div class="buttons">
+            <button id="yes-btn" onclick="handleyesClick()">surprise 🎁</button>
+           <audio id="bg-music">
+    <source src="music/birthday.mp3" type="audio/mpeg">
+</audio> 
 
-.hearts-bg::before,
-.hearts-bg::after {
-    content: '   ';
-    position: absolute;
-    font-size: 1.5rem;
-    opacity: 0.15;
-    animation: floatHearts 12s linear infinite;
-    white-space: nowrap;
-    top: 100%;
-    left: 10%;
-}
-
-.hearts-bg::after {
-    animation-delay: 6s;
-    left: 60%;
-    content: '   ';
-}
-
-@keyframes floatHearts {
-    from { transform: translateY(0); opacity: 0.15; }
-    to { transform: translateY(-110vh); opacity: 0; }
-}
-
-.container {
-    text-align: center;
-    padding: 40px 20px;
-    animation: fadeUp 0.8s ease;
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: white;
-    font-weight: 900;
-    margin-bottom: 20px;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-@keyframes wiggle {
-    0%, 100% { transform: rotate(-1deg); }
-    50% { transform: rotate(1deg); }
-}
-
-.gif-container {
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
-}
-
-#cat-gif {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
-    transition: opacity 0.3s ease;
-}
-
-.buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-#yes-btn {
-    background: linear-gradient(135deg, #ff7eb3, #ff758c);
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.4rem;
-    font-weight: 800;
-    padding: 16px 40px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-#yes-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 10px 30px rgba(255, 118, 150, 0.5);
-}
-
-#yes-btn:active {
-    transform: scale(0.98);
-}
-
-#tease-toast {
-    margin-top: 14px;
-    font-size: 1rem;
-    color: #d63384;
-    font-weight: 700;
-    font-style: italic;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    min-height: 1.5rem;
-}
-
-#tease-toast.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Music toggle button */
-#music-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.85);
-    border: none;
-    border-radius: 50%;
-    width: 52px;
-    height: 52px;
-    font-size: 1.4rem;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    transition: transform 0.2s;
-    z-index: 100;
-}
-
-#music-toggle:hover {
-    transform: scale(1.1);
-}
-
-/* Yes page specific */
-.yes-container h1.yes-title {
-    font-size: 2.8rem;
-    animation: bounceTitle 0.6s ease infinite alternate;
-}
-
-@keyframes bounceTitle {
-    from { transform: translateY(0) rotate(-1deg); }
-    to { transform: translateY(-12px) rotate(1deg); }
-}
-
-.yes-message {
-    font-size: 1.4rem;
-    color: #e91e8c;
-    font-weight: 700;
-    margin-top: 24px;
-    animation: fadeIn 1s ease 0.5s both;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.yes-container #cat-gif {
-    width: 260px;
-    height: 260px;
-}
+    <script src="script.js"></script>
+</body>
+</html>
 
