@@ -10,7 +10,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
+    transition: background 0.5s ease;
     background: radial-gradient(circle at 20% 30%, #ff9a9e22, transparent 40%),
             radial-gradient(circle at 80% 70%, #fad0c422, transparent 40%),
             linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
@@ -206,6 +207,7 @@ h1 {
 }
 
 .yes-container #cat-gif {
+    transition: transform.0.3s ease;
     width: 220px;
     margin: 20px 0;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
