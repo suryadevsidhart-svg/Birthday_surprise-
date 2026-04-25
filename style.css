@@ -54,17 +54,59 @@ body {
     position: relative;
     z-index: 1;
 
-    background: rgba(255, 255, 255, 0.12);
     padding: 40px 30px;
     border-radius: 24px;
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    /* glass base */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
-    border: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    /* glow border */
+    border: 1px solid rgba(255, 255, 255, 0.2);
 
-    overflow: hidden; /* 🔥 THIS FIXES IT */
+    /* depth */
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+
+    overflow: hidden;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.25),
+        transparent
+    );
+
+    transform: rotate(25deg);
+    pointer-events: none;
+}
+
+.container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+
+    box-shadow:
+        0 0 40px rgba(255, 150, 180, 0.15),
+        0 0 80px rgba(255, 150, 180, 0.08);
+
+    pointer-events: none;
+}
+.container:hover {
+    transform: translateY(-5px) scale(1.01);
+    transition: all 0.4s ease;
 }
 
 h1 {
