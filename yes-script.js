@@ -54,7 +54,8 @@ function launchConfetti() {
     }, 300)
 }
 
-function toggleMusic() {   const music = document.getElementById('bg-music')
+function toggleMusic() {   
+    const music = document.getElementById('bg-music')
     if (musicPlaying) {
         music.pause()
         musicPlaying = false
