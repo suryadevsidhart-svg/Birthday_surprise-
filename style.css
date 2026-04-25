@@ -71,24 +71,26 @@ body {
         inset 0 1px 0 rgba(255,255,255,0.3);
 
     overflow: hidden;
+    transform-style: preserve-3d;
+will-change: transform;
+transition: transform 0.2s ease;
 }
 
 .container::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: -50%;
-    width: 200%;
-    height: 100%;
+    inset: -50%;
 
     background: linear-gradient(
         120deg,
-        transparent,
-        rgba(255,255,255,0.25),
-        transparent
+        transparent 30%,
+        rgba(255,255,255,0.35),
+        transparent 70%
     );
 
-    transform: rotate(25deg);
+    transform: rotate(25deg) translateX(-100%);
+    animation: shineMove 6s linear infinite;
+
     pointer-events: none;
 }
 
@@ -98,12 +100,15 @@ body {
     inset: 0;
     border-radius: 24px;
 
-    box-shadow:
-        0 0 40px rgba(255, 150, 180, 0.15),
-        0 0 80px rgba(255, 150, 180, 0.08);
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.15),
+        transparent 40%
+    );
 
     pointer-events: none;
 }
+
 .container:hover {
     transform: translateY(-5px) scale(1.01);
     transition: all 0.4s ease;
@@ -282,3 +287,11 @@ h1 {
     }
 }
 
+@keyframes shineMove {
+    0% {
+        transform: rotate(25deg) translateX(-100%);
+    }
+    100% {
+        transform: rotate(25deg) translateX(100%);
+    }
+}
