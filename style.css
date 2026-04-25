@@ -210,8 +210,12 @@ h1 {
     margin: 20px 0;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
 
-    animation: popin 0.8s ease 0.6 both;
+    animation: popin 0.8s ease 0.6s both;
 }
+#cat-gif:hover {
+    transform: scale(1.05);
+}
+
 @keyframes textReveal {
     0% {
         opacity: 0;
@@ -227,7 +231,7 @@ h1 {
     0% { text-shadow: 0 0 10px rgba(255,150,180,0.3); }
     100% { text-shadow: 0 0 35px rgba(255,150,180,0.8); }
 }
-@keyframes popIn {
+@keyframes popin {
     0% {
         opacity: 0;
         transform: scale(0.6) rotate(-5deg);
