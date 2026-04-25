@@ -66,4 +66,38 @@ function toggleMusic() {
         document.getElementById('music-toggle').textContent = '🔊'
     }
 }
+const card = document.querySelector('.container');
 
+const isDesktop = window.innerWidth >= 768;
+
+if (isDesktop && card) {
+
+    // Tilt effect
+    document.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = -(y - centerY) / 20;
+        const rotateY = (x - centerX) / 20;
+
+        card.style.transform =
+            `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    // Cursor light
+    document.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+        card.style.setProperty('--x', x + '%');
+        card.style.setProperty('--y', y + '%');
+    });
+
+}
