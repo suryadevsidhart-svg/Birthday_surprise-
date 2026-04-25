@@ -1,60 +1,74 @@
-let musicPlaying = false
-
+let musicPlaying = false;
+function toggleMusic() {  
+                        
 window.addEventListener('load', () => {
-    launchConfetti()
+    const music = document.getElementById('bg-music');
 
-    const music = document.getElementById('bg-music')
-
-    const playPromise = music.play()
-
+    // play music safely
+    const playPromise = music.play();
     if (playPromise !== undefined) {
         playPromise.catch(() => {
             document.body.addEventListener('click', () => {
-                music.play()
-            }, { once: true })
-        })
+                music.play();
+            }, { once: true });
+        });
     }
-})
+
+    // staged reveal
+    setTimeout(() => {
+        document.querySelector('.yes-title').classList.add('show');
+    }, 200);
+
+    setTimeout(() => {
+        document.querySelector('#cat-gif').classList.add('show');
+    }, 900);
+
+    setTimeout(() => {
+        document.querySelector('.yes-message').classList.add('show');
+    }, 1500);
+
+    setTimeout(() => {
+        launchConfetti();
+    }, 2200);
+});
 
 function launchConfetti() {
-    const colors = ['#ff69b4', '#ff1493', '#ff85a2', '#ffb3c1', '#ff0000', '#ff6347', '#fff', '#ffdf00']
-    const duration = 6000
-    const end = Date.now() + duration
+    const colors = ['#ff69b4', '#ff1493', '#ff85a2', '#ffb3c1', '#fff', '#ffdf00'];
+    const duration = 5000;
+    const end = Date.now() + duration;
 
-    // Initial big burst
     confetti({
-        particleCount: 150,
-        spread: 100,
+        particleCount: 90,
+        spread: 90,
         origin: { x: 0.5, y: 0.3 },
         colors
-    })
+    });
 
-    // Continuous side cannons
     const interval = setInterval(() => {
         if (Date.now() > end) {
-            clearInterval(interval)
-            return
+            clearInterval(interval);
+            return;
         }
 
         confetti({
-            particleCount: 40,
+            particleCount: 25,
             angle: 60,
             spread: 55,
             origin: { x: 0, y: 0.6 },
             colors
-        })
+        });
 
         confetti({
-            particleCount: 40,
+            particleCount: 25,
             angle: 120,
             spread: 55,
             origin: { x: 1, y: 0.6 },
             colors
-        })
-    }, 300)
-}
+        });
 
-function toggleMusic() {   
+    }, 500);
+}
+    function toggleMusic() {
     const music = document.getElementById('bg-music')
     if (musicPlaying) {
         music.pause()
