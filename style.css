@@ -11,7 +11,9 @@ body {
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    background: radial-gradient(circle at 20% 30%, #ff9a9e22, transparent 40%),
+            radial-gradient(circle at 80% 70%, #fad0c422, transparent 40%),
+            linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
     color: white;
 }
 
@@ -26,7 +28,7 @@ body {
 
 .hearts-bg::before,
 .hearts-bg::after {
-    content: '🎈   🎊   🥳   🎉   🎂';
+    content: '✨ 🎉 💖 🎂 ✨';
     position: absolute;
     font-size: 1.5rem;
     opacity: 0.15;
@@ -48,13 +50,14 @@ body {
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     padding: 40px 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    backdrop-filter: blur(18px);
+    border:1px solid rgba(255,255,255,0.1);
+    
     text-align: center;
-
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
 @keyframes fadeUp {
@@ -71,12 +74,15 @@ body {
 h1 {
     font-size:clamp(2rem,5vw,3rem);
     font-weight: 900;
-    margin-bottom: 15px;}
+    margin-bottom: 15px; 
+}
+
 .gradient-text {
     background: linear-gradient(90deg, #ff9a9e, #fad0c4);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;}
+    -webkit-text-fill-color: transparent;
 }
+
 
 
 @keyframes wiggle {
@@ -113,6 +119,7 @@ h1 {
     border: none;
     border-radius: 30px;
     padding: 15px 40px;
+    box-shadow: 0 10px 30px rgba(255, 118, 150, 0.4);
 
     font-size: 1.3rem;
     font-weight: 800;
@@ -171,10 +178,12 @@ h1 {
 
 /* Yes page specific */
 .yes-container h1.yes-title {
-    text-shadow:0 0 25px rgba(255,150,180,0.5);
     font-size: clamp(2.2rem, 5vw, 3rem);
-    animation: textReveal 1s ease forwards,
-               bounceTitle 0.6s ease infinite alternate 1.2s;
+
+    animation:
+        textReveal 1s ease forwards,
+        bounceTitle 0.6s ease infinite alternate 1.2s,
+        glowPulse 1.5s ease-in-out infinite alternate 1.2s;
 }
 
 @keyframes bounceTitle {
@@ -199,8 +208,9 @@ h1 {
 .yes-container #cat-gif {
     width: 220px;
     margin: 20px 0;
-
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+
+    animation: popin 0.8s ease 0.6 both;
 }
 @keyframes textReveal {
     0% {
@@ -212,3 +222,19 @@ h1 {
         transform: translateY(0) scale(1);
     }
 }
+
+@keyframes glowPulse {
+    0% { text-shadow: 0 0 10px rgba(255,150,180,0.3); }
+    100% { text-shadow: 0 0 35px rgba(255,150,180,0.8); }
+}
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.6) rotate(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
