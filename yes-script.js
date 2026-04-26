@@ -28,33 +28,66 @@ window.addEventListener('load', () => {
 
     setTimeout(() => {
         launchConfetti();
-    }, 2200);
+    }, 1800);
 });
 
 function launchConfetti() {
-    const duration = 4000;
-    const end = Date.now() + duration;
-
     const isLowPower = window.innerWidth < 768;
 
-    const interval = setInterval(() => {
-        if (Date.now() > end) {
-            clearInterval(interval);
-            return;
-        }
-
+    // 🎬 1. MAIN CINEMATIC BURST (center explosion)
+    setTimeout(() => {
         confetti({
-            particleCount: isLowPower ? 10 : 20,
-            spread: 70,
-            origin: {
-                x: Math.random(),
-                y: Math.random() * 0.5
-            }
+            particleCount: isLowPower ? 80 : 140,
+            spread: 100,
+            startVelocity: 45,
+            origin: { x: 0.5, y: 0.5 },
+            gravity: 0.9,
+            scalar: 1.2
         });
+    }, 0);
 
-    }, 400);
+
+    // 🎬 2. SIDE CANNONS (left + right)
+    setTimeout(() => {
+        const interval = setInterval(() => {
+            confetti({
+                particleCount: isLowPower ? 15 : 25,
+                angle: 60,
+                spread: 60,
+                origin: { x: 0, y: 0.7 }
+            });
+
+            confetti({
+                particleCount: isLowPower ? 15 : 25,
+                angle: 120,
+                spread: 60,
+                origin: { x: 1, y: 0.7 }
+            });
+        }, 400);
+
+        // stop cannons
+        setTimeout(() => clearInterval(interval), 2000);
+
+    }, 300);
+
+
+    // 🎬 3. TOP FALL (emotional rain)
+    setTimeout(() => {
+        const rain = setInterval(() => {
+            confetti({
+                particleCount: isLowPower ? 10 : 18,
+                spread: 70,
+                startVelocity: 10,
+                origin: { x: Math.random(), y: 0 },
+                gravity: 0.4,
+                scalar: 0.9
+            });
+        }, 300);
+
+        setTimeout(() => clearInterval(rain), 2500);
+
+    }, 1200);
 }
-
     function toggleMusic() {
     const music = document.getElementById('bg-music')
     if (musicPlaying) {
