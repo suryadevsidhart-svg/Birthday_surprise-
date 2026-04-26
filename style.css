@@ -336,12 +336,11 @@ h1 {
         transform: rotate(25deg) translateX(100%);
     }
 }
-.yes-title,
-#cat-gif,
-.yes-message {
+.yes-container .yes-title,
+.yes-container #cat-gif,
+.yes-container .yes-message {
     opacity: 0;
     transform: translateY(30px) scale(0.95);
-    transition: all 0.6s ease;
 }
 
 .show {
