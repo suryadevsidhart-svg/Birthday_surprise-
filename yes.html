@@ -13,9 +13,10 @@
     <div class="hearts-bg"></div>
 
     <div class="container yes-container">
-       <h1>
+        <h1 class="yes-title">
   <span class="gradient-text">Happy birthday to you</span> 🎉 🎊
-       </h1> 
+        </h1>
+        
         <div class="gif-container">
             <img id="cat-gif" src="Birthday.gif" alt="celebrating">
         </div>
@@ -32,25 +33,7 @@
  
     <script src="yes-script.js"></script>
 
-    <script>
-const card = document.querySelector('.container');
 
-document.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = -(y - centerY) / 20;
-    const rotateY = (x - centerX) / 20;
-
-    card.style.transform =
-        `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-});
-    </script>
     <script>
 const heartsContainer = document.querySelector('.hearts-bg');
 
