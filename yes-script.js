@@ -1,5 +1,4 @@
-let musicPlaying = false;
-function toggleMusic() {  
+let musicPlaying = false; 
                         
 window.addEventListener('load', () => {
     const music = document.getElementById('bg-music');
