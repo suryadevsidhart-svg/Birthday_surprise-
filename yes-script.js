@@ -24,7 +24,7 @@ window.addEventListener('load', () => {
 
     setTimeout(() => {
         document.querySelector('.yes-message').classList.add('show');
-    }, 1500);
+    }, 2000);
 
     setTimeout(() => {
         launchConfetti();
